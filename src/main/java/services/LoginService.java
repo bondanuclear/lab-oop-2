@@ -14,12 +14,12 @@ import java.util.Set;
 
 @Service
 public class LoginService {
-    public Student getCurrentCoffeeUser() {
+    public Student getCurrentStudent() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (Student) principal;
     }
 
-    public Admin getCurrentCoffeeAdmin() {
+    public Admin getCurrentMentor() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (Admin) principal;
     }

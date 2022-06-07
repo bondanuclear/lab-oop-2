@@ -23,6 +23,8 @@ public class Course {
     @Column(name = "mentor")
     private String mentor;
 
-    @Column(name = "mark")
-    private Long mark;
+    @Column(name = "price")
+    private Long price;
+    @Column(name = "count")
+    private Long count;
 }

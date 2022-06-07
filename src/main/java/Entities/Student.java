@@ -15,7 +15,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "coffee_user")
+@Table(name = "student_user")
 public class Student implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
