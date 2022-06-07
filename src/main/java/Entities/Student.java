@@ -1,47 +1,60 @@
 package Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
-public class Student {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "coffee_user")
+public class Student implements UserDetails {
     @Id
-    @GeneratedValue
-    private long id;
-    private String firstName;
-    private String lastName;
-    private String courseEnrolled;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    public long getId() {
-        return id;
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "amount")
+    private Long amount;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_FAC_USER"));
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public String getPassword() {
+        return null;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public String getLastName() {
-        return lastName;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getCourseEnrolled() {
-        return courseEnrolled;
-    }
-
-    public void setCourseEnrolled(String courseEnrolled) {
-        this.courseEnrolled = courseEnrolled;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

@@ -15,13 +15,13 @@ import java.awt.*;
 
 @Route("")
 public class MainView extends VerticalLayout {
-    private StudentRepository repository;
-    private TextField firstName = new TextField("First name");
-    private TextField lastName = new TextField("Last name");
-    private TextField courseEnrolled = new TextField("Course name");
-    private Binder<Student> binder = new Binder<>(Student.class);
-    private Grid<Student> grid = new Grid<>(Student.class);
-    private StudentRepository ;
+
+
+
+
+
+
+    private StudentRepository repository ;
 
     public MainView(StudentRepository repository)
     {
@@ -57,4 +57,11 @@ public class MainView extends VerticalLayout {
     {
         grid.setItems(repository.findAll());
     }
+
+    private Grid<Student> grid = new Grid<>(Student.class);
+    private Binder<Student> binder = new Binder<>(Student.class);
+    private TextField courseEnrolled = new TextField("Course name");
+    private TextField lastName = new TextField("Last name");
+    private TextField firstName = new TextField("First name");
+
 }
